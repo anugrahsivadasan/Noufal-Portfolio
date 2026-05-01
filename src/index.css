@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  background-color: #000;
+}
+
+
+@keyframes floatSoft {
+  0% {
+    transform: translate(var(--x), var(--y)) translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(var(--x), var(--y)) translateY(-8px) rotate(1deg);
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-float-soft {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+
+@keyframes float-soft {
+  0%, 100% {
+    transform: translate(var(--x, 0px), var(--y, 0px)) translateY(0px);
+  }
+  50% {
+    transform: translate(var(--x, 0px), var(--y, 0px)) translateY(-10px);
+  }
+}
+
+.animate-float-soft {
+  animation: float-soft 4s ease-in-out infinite;
+}
