@@ -40,11 +40,17 @@ const Testimonials = () => {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
               Client
             </span>
-<span style={{ color: accentGradient }}>
+            <span style={{ color: accentGradient }}>
               Love
             </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto rounded-full" />
+
+          <div
+            className="w-24 h-1 mx-auto rounded-full"
+            style={{
+              background: `linear-gradient(to right, ${accentGradient}, white)`
+            }}
+          />
         </motion.div>
 
         <div ref={ref} className="grid md:grid-cols-3 gap-8">
@@ -55,20 +61,40 @@ const Testimonials = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               whileHover={{ y: -8 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 relative group hover:border-pink-500/50 transition-all"
+              style={{ "--accent": accentGradient }}
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 relative group hover:border-[var(--accent)] transition-all"
             >
-              <div className="absolute -top-4 left-6 text-6xl text-pink-500/20 group-hover:text-pink-500/40 transition">“</div>
+              <div
+                className="absolute -top-4 left-6 text-6xl transition"
+                style={{ color: accentGradient + '33' }}
+                onMouseEnter={(e) => (e.target.style.color = accentGradient + '66')}
+                onMouseLeave={(e) => (e.target.style.color = accentGradient + '33')}
+              >
+                “
+              </div>
+
               <div className="flex items-center gap-4 mb-4">
-                <img src={testimonial.avatar} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover border-2 border-pink-500/50" />
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full object-cover border-2"
+                  style={{ borderColor: accentGradient + '80' }}
+                />
                 <div>
                   <h4 className="font-semibold text-white">{testimonial.name}</h4>
                   <p className="text-xs text-gray-400">{testimonial.role}</p>
                 </div>
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed italic">{testimonial.text}</p>
+
+              <p className="text-gray-300 text-sm leading-relaxed italic">
+                {testimonial.text}
+              </p>
+
               <div className="mt-4 flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-yellow-500 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                  <svg key={i} className="w-4 h-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                  </svg>
                 ))}
               </div>
             </motion.div>

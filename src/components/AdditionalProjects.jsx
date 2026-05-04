@@ -40,11 +40,17 @@ const AdditionalProjects = () => {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
               More
             </span>
-<span style={{ color: accentGradient }}>
+            <span style={{ color: accentGradient }}>
               Creative Work
             </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto rounded-full" />
+
+          <div
+            className="w-24 h-1 mx-auto rounded-full"
+            style={{
+              background: `linear-gradient(to right, ${accentGradient}, white)`
+            }}
+          />
         </motion.div>
 
         <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -58,17 +64,26 @@ const AdditionalProjects = () => {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: idx * 0.1, duration: 0.4 }}
               whileHover={{ scale: 1.02 }}
-              className="group relative overflow-hidden rounded-xl aspect-video bg-white/5 border border-white/10 hover:border-pink-500/50 transition-all"
+              style={{ "--accent": accentGradient }}
+              className="group relative overflow-hidden rounded-xl aspect-video bg-white/5 border border-white/10 hover:border-[var(--accent)] transition-all"
             >
               <img 
                 src={project.image} 
                 alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
+
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <div>
-                  <p className="text-xs text-pink-400 uppercase">{project.category}</p>
-                  <h4 className="text-lg font-semibold text-white">{project.title}</h4>
+                  <p
+                    className="text-xs uppercase"
+                    style={{ color: accentGradient }}
+                  >
+                    {project.category}
+                  </p>
+                  <h4 className="text-lg font-semibold text-white">
+                    {project.title}
+                  </h4>
                 </div>
               </div>
             </motion.a>

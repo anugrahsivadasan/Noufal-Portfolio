@@ -8,7 +8,7 @@ const gradients = {
   blue: '#3b82f6',
   orange: '#f97316',
   green: '#10b981',
-  pink: '#ec4899',
+  pink: '#7C70E9',
   cyan: '#06b6d4',
   red: '#ef4444',
   indigo: '#6366f1',

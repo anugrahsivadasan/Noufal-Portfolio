@@ -40,11 +40,17 @@ const FeaturedCaseStudies = () => {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
               Featured 
             </span>
-<span style={{ color: accentGradient }}>
-               Case Studies
+            <span style={{ color: accentGradient }}>
+              Case Studies
             </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto rounded-full" />
+
+          <div
+            className="w-24 h-1 mx-auto rounded-full"
+            style={{
+              background: `linear-gradient(to right, ${accentGradient}, white)`
+            }}
+          />
         </motion.div>
 
         <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -58,7 +64,8 @@ const FeaturedCaseStudies = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               whileHover={{ y: -12 }}
-              className="group block bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all duration-300"
+              style={{ "--accent": accentGradient }}
+              className="group block bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)] transition-all duration-300"
             >
               <div className="relative overflow-hidden h-56">
                 <img 
@@ -68,12 +75,29 @@ const FeaturedCaseStudies = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
+
               <div className="p-6">
-                <span className="text-xs text-pink-400 uppercase tracking-wider">{project.category}</span>
-                <h3 className="text-xl font-semibold mt-2 mb-3 group-hover:text-pink-400 transition">{project.title}</h3>
+                <span
+                  className="text-xs uppercase tracking-wider"
+                  style={{ color: accentGradient }}
+                >
+                  {project.category}
+                </span>
+
+                <h3
+                  className="text-xl font-semibold mt-2 text-white mb-3 transition"
+                  style={{}}
+                  onMouseEnter={(e) => (e.target.style.color = accentGradient)}
+                  onMouseLeave={(e) => (e.target.style.color = "")}
+                >
+                  {project.title}
+                </h3>
+
                 <div className="flex items-center gap-2 text-sm text-gray-400 group-hover:text-white transition">
                   <span>View on Behance</span>
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </div>
               </div>
             </motion.a>
